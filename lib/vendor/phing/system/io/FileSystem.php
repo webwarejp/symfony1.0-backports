@@ -164,7 +164,7 @@ abstract class FileSystem {
     function checkAccess(PhingFile $f, $write = false) {
         // we clear stat cache, its expensive to look up from scratch,
         // but we need to be sure
-        @clearstatcache();
+        @clearstatcache(true);
 
 
         // Shouldn't this be $f->GetAbsolutePath() ?
@@ -201,7 +201,7 @@ abstract class FileSystem {
             return 0;
         }
 
-        @clearstatcache();
+        @clearstatcache(true);
         $strPath = (string) $f->getPath();
         $mtime = @filemtime($strPath);
         if (false === $mtime) {

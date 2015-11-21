@@ -1318,7 +1318,7 @@ class Archive_Zip
     */
 
     // ----- Set the file properties
-    clearstatcache();
+    clearstatcache(true);
     $p_header['version'] = 20;
     $p_header['version_extracted'] = 10;
     $p_header['flag'] = 0;

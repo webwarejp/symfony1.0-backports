@@ -478,7 +478,7 @@ class sfFileCache extends sfCache
 
     if ($fp)
     {
-      clearstatcache(); // because the filesize can be cached by PHP itself...
+      clearstatcache(true);
       $length = @filesize($path.$file);
       $mqr = get_magic_quotes_runtime();
       set_magic_quotes_runtime(0);
