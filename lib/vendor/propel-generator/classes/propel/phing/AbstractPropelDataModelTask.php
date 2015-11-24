@@ -414,8 +414,11 @@ abstract class AbstractPropelDataModelTask extends Task {
 					} else {
 						// normalize the document using normalizer stylesheet
 
+						// @see http://php.net/manual/xsl.examples.php
+						$xslDoc = new DOMDocument();
+						$xslDoc->load($this->xslFile->getAbsolutePath());
 						$xsl = new XsltProcessor();
-						$xsl->importStyleSheet(DomDocument::load($this->xslFile->getAbsolutePath()));
+						$xsl->importStyleSheet($xslDoc);
 						$transformed = $xsl->transformToDoc($dom);
 						$newXmlFilename = substr($xmlFile->getName(), 0, strrpos($xmlFile->getName(), '.')) . '-transformed.xml';
 
