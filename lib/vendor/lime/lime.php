@@ -411,7 +411,7 @@ class lime_output_color extends lime_output
     $message = preg_replace_callback(
       '/(\->|\:\:)?([a-zA-Z0-9_]+?)\(\)/',
       function($matches){
-        return $this->colorizer->colorize($matches[1].$matches[2].(), 'PARAMETER');
+        return $this->colorizer->colorize($matches[1].$matches[2].'()', 'PARAMETER');
       },
       $message
     );
